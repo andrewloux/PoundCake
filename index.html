@@ -12,21 +12,53 @@
 			KEYCODE_DOWN = 40;
 		var ellip = new createjs.Bitmap('cake.png');
 		
-		/*Keyboard input handler*/
+		/*Keyboard input handlers - keydown and keyup*/
+		var left,
+			right,
+			up,
+			down;
+
 		function keyPressed(event){
+			if(!event){ var event = window.event; }
 			switch(event.keyCode){
-                case KEYCODE_LEFT:        
-                    ellip.x -= 5;
-                    break;
-                case KEYCODE_RIGHT: 
-                    ellip.x += 5; 
-                    break;
-                case KEYCODE_UP: 
-                    ellip.y -= 5;
-                    break;
-                case KEYCODE_DOWN: 
-                    ellip.y += 5;
-                    break;			
+				case KEYCODE_LEFT: 
+					console.log("left held");
+					left = true;
+					break;
+				case KEYCODE_RIGHT: 
+					console.log("right held");
+					right = true; 
+					break;
+				case KEYCODE_UP: 
+					console.log("up held");
+					up = true;
+					break;
+				case KEYCODE_DOWN: 
+					console.log("down held");
+					down = true;
+					break;          
+			}
+		}
+
+		function keyUp(event){
+			if(!event){ var event = window.event; }
+			switch(event.keyCode){
+				case KEYCODE_LEFT: 
+					console.log("left released");
+					left = false;
+					break;
+				case KEYCODE_RIGHT: 
+					console.log("right released");
+					right = false; 
+					break;
+				case KEYCODE_UP: 
+					console.log("up released");
+					up = false;
+					break;
+				case KEYCODE_DOWN: 
+					console.log("down released");
+					down = false;
+					break;          
 			}
 		}
 		
@@ -39,19 +71,32 @@
 			
 			/*Connecting keydown input to keyPressed handler*/
 			this.document.onkeydown = keyPressed;
+			/*Connecting key up event to keyUp handler*/
+			this.document.onkeyup = keyUp;
 			
 			/*Continually updating the stage*/
 			createjs.Ticker.addEventListener('tick',handleTick);
 			
 			function handleTick(event){
-				
-				/*Scaling down the image*/
+			   /*Scaling down the image*/
 				ellip.scaleX = 0.10;
 				ellip.scaleY = 0.10;
-				
+
+				if(left) {
+					ellip.x -= 5;
+				} else if(right) {
+					ellip.x += 5;
+				}
+
+				if(up) {
+					ellip.y -= 5;
+				} else if(down) {
+					ellip.y += 5;
+				}
+
 				if (ellip.x > stage.canvas.width) { 
 					ellip.x = stage.canvas.width; 
-				}	
+				}   
 				stage.update();
 			}
 		}
