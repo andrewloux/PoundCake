@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>Pound Cake</title>
+
+	<script type="text/javascript" src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
+	<script>
+		var KEYCODE_LEFT = 37, 
+			KEYCODE_RIGHT = 39,
+			KEYCODE_UP = 38, 
+			KEYCODE_DOWN = 40;
+		var ellip = new createjs.Bitmap('cake.png');
+		
+		/*Keyboard input handler*/
+		function keyPressed(event){
+			switch(event.keyCode){
+                case KEYCODE_LEFT:        
+                    ellip.x -= 5;
+                    break;
+                case KEYCODE_RIGHT: 
+                    ellip.x += 5; 
+                    break;
+                case KEYCODE_UP: 
+                    ellip.y -= 5;
+                    break;
+                case KEYCODE_DOWN: 
+                    ellip.y += 5;
+                    break;			
+			}
+		}
+		
+		function Main(){
+			/*Link Canvas*/
+			var stage = new createjs.Stage('demoCanvas');
+			
+			/*Image initialization*/
+			stage.addChild(ellip);
+			
+			/*Connecting keydown input to keyPressed handler*/
+			this.document.onkeydown = keyPressed;
+			
+			/*Continually updating the stage*/
+			createjs.Ticker.addEventListener('tick',handleTick);
+			
+			function handleTick(event){
+				
+				/*Scaling down the image*/
+				ellip.scaleX = 0.10;
+				ellip.scaleY = 0.10;
+				
+				if (ellip.x > stage.canvas.width) { 
+					ellip.x = stage.canvas.width; 
+				}	
+				stage.update();
+			}
+		}
+	</script>
+</head>
+
+<body onload="Main();">
+<div class="canvasHolder">
+	<canvas style="width:100%;height:100%;"id="demoCanvas"></canvas>
+</div>
+</body>
+</html>
