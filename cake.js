@@ -1,3 +1,10 @@
+		// Array Remove - By John Resig (MIT Licensed)
+		Array.prototype.remove = function(from, to) {
+		  var rest = this.slice((to || from) + 1 || this.length);
+		  this.length = from < 0 ? this.length + from : from;
+		  return this.push.apply(this, rest);
+		};
+		
 		/*Since the JS Trig functions take only rads*/
 		function toRadians (angle) {
 			return angle * (Math.PI / 180);
@@ -16,8 +23,8 @@
 		var ellip = new createjs.Shape();
         ellip.graphics.beginFill("red").drawCircle(0, 0, 3);
 		*/
-		ellip.scaleX = 0.1;
-		ellip.scaleY = 0.1;
+		ellip.scaleX = 0.07;
+		ellip.scaleY = 0.07;
         ellip.x = 100;
         ellip.y = 100;
 		
@@ -84,14 +91,9 @@
 				var cake = new createjs.Bitmap('cake.png');
 				cake.scaleX = 0.4;
 				cake.scaleY = 0.4;
-				/*
-				var cake = new createjs.Shape();
-				cake.graphics.beginFill("blue").drawCircle(0, 0, 2);
-				*/
-				
+
 				/*Either x or y must be 0, using a binary coin toss to decide*/
 				var coin = Math.floor(Math.random() * 1) + 1;
-				coin = 1;
 				if (coin == 1){
 					cake.x = 0;
 					cake.y = Math.floor((Math.random()*stage.canvas.height)+1); //Random number between 1 and 10
@@ -101,13 +103,14 @@
 					cake.y = 0;
 				}
 				
-				cake.rotation = Math.floor((Math.random()*90)+1); //Random angle between 1 and 180
+				//cake.rotation = Math.floor((Math.random()*100)+1); //Random angle between 1 and 180
+				cake.rotation = 0;
 				cake_tray.push(cake);
 				stage.addChild(cake);
 			}
 			
 			setInterval(function(){
-				if (cake_tray.length == 0){
+				if (cake_tray.length < 5){
 					make_cake();
 				}
 			},500);
@@ -153,10 +156,11 @@
 					
 					if (collision){
 						stage.removeChild(cake_tray[i]);
+						cake_tray.remove(i);
 					}
 					
-					cake_tray[i].x = cake_tray[i].x + Math.cos(toRadians(cake_tray[i].rotation))*1;
-					cake_tray[i].y = cake_tray[i].y + Math.sin(toRadians(cake_tray[i].rotation))*1
+					cake_tray[i].x = cake_tray[i].x + Math.cos(toRadians(cake_tray[i].rotation))*5;
+					cake_tray[i].y = cake_tray[i].y + Math.sin(toRadians(cake_tray[i].rotation))*5
 				}
 								
 				stage.update();
