@@ -23,8 +23,8 @@
 		var ellip = new createjs.Shape();
         ellip.graphics.beginFill("red").drawCircle(0, 0, 3);
 		*/
-		ellip.scaleX = 0.07;
-		ellip.scaleY = 0.07;
+		ellip.scaleX = 0.2;
+		ellip.scaleY = 0.2;
         ellip.x = 100;
         ellip.y = 100;
 		
@@ -89,8 +89,8 @@
 			function make_cake()
 			{
 				var cake = new createjs.Bitmap('cake.png');
-				cake.scaleX = 0.4;
-				cake.scaleY = 0.4;
+				cake.scaleX = 0.10;
+				cake.scaleY = 0.10;
 
 				/*Either x or y must be 0, using a binary coin toss to decide*/
 				var coin = Math.floor(Math.random() * 1) + 1;
