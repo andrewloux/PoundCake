@@ -11,6 +11,22 @@
 	display:block;
 }
 
+#lives{
+	
+}
+
+
+#score{
+	width:50%;
+	height:50%;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	
+	/*font-size:0.5em;*/
+	text-align:center;
+}
+
 #start{
     left:0;
     right:0;

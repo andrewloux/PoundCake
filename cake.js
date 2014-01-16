@@ -146,40 +146,80 @@
 			createjs.Ticker.addEventListener('tick',handleTick);
 			
 			function handleTick(event){
-
+			console.log(ellip.x);
 							
 			   /*Scaling down the image*/
 				//ellip.scaleX = 0.10;
 				//ellip.scaleY = 0.10;
 
 				if(left) {
-					ellip.x -= 5;
+					//If too far left
+					if (ellip.x < 0){
+						;
+					}
+					else{
+						ellip.x -= 5;
+					}
 				} else if(right) {
-					ellip.x += 5;
+					//If too far right
+					if (ellip.x > (stage.canvas.width-35)){
+						;
+					}
+					else{
+						ellip.x += 5;
+					}
 				}
 
 				if(up) {
-					ellip.y -= 5;
+					//If too far up
+					if (ellip.y <=0){
+						;
+					}
+					else{
+						ellip.y -= 5;
+					}
 				} else if(down) {
-					ellip.y += 5;
+					//If too far down
+					if (ellip.y > (stage.canvas.height-35)){
+						;
+					}
+					else{
+						ellip.y += 5;
+					}
 				}
 
 				if (ellip.x > stage.canvas.width) { 
 					ellip.x = stage.canvas.width; 
 				}   
 				
-				/*a.) Check cake collisions, b.) Cake movements*/
+				/*
+				a.) Check cake collisions
+				b.) Cake movements
+				*/
 				for (var i = 0; i < cake_tray.length; i++) {
 				
 					var collision = ndgmr.checkPixelCollision(ellip,cake_tray[i],0.5);
 					
 					if (collision){
+						//Points tallying
+						var score = parseFloat($("#score").text());
+						score+=1;
+						$("#score").text(score);
+						
+						//Removing cakes Jay Z has eaten.
 						stage.removeChild(cake_tray[i]);
 						cake_tray.remove(i);
 					}
 					
+					//If the cake moves past the screen, remove from cake_tray and stage. 
+					if (cake_tray[i].x > stage.canvas.width){
+						//Dock lives over here.
+					
+						stage.removeChild(cake_tray[i]);
+						cake_tray.remove(i);
+					}
 					cake_tray[i].x = cake_tray[i].x + Math.cos(toRadians(cake_tray[i].rotation))*3;
-					cake_tray[i].y = cake_tray[i].y + Math.sin(toRadians(cake_tray[i].rotation))*3
+					//cake_tray[i].y = cake_tray[i].y + Math.sin(toRadians(cake_tray[i].rotation))*3
 				}
 								
 				stage.update();
