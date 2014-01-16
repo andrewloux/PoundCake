@@ -19,14 +19,18 @@
 		/*Jay-Z initialization*/
 		var ellip = new createjs.Bitmap('jayz.png');
 		
+		var current_ellipWidth = ellip.image.width;
+		var current_ellipHeight = ellip.image.height;
+		var desired_ellipWidth = 65;
+		var desired_ellipHeight = 70;
+		ellip.scaleX = desired_ellipWidth/current_ellipWidth;
+		ellip.scaleY = desired_ellipHeight/current_ellipHeight;		
 		/*
 		var ellip = new createjs.Shape();
         ellip.graphics.beginFill("red").drawCircle(0, 0, 3);
 		*/
-		ellip.scaleX = 0.2;
-		ellip.scaleY = 0.2;
-        ellip.x = 100;
-        ellip.y = 100;
+        ellip.x = 120;
+        ellip.y = 50;
 		
 		var cake_tray = [];
 		/*the cake*/
@@ -81,7 +85,18 @@
 			}
 		}
 		
-		function Main(){
+		function Main(){	
+		
+			/*Registering sound*/
+			createjs.Sound.addEventListener("fileload", handleLoad);
+			createjs.Sound.registerSound("CakeLongLoop.ogg", "cake_loop", 1, true);
+			function handleLoad(event) {
+				 createjs.Sound.play("cake_loop");
+				 // alternately, we can pass full source path and specify each argument individually
+				 var myInstance = createjs.Sound.play("CakeLongLoop.ogg", createjs.Sound.INTERRUPT_ANY, 0, 0, -1, 1, 0);
+			 }			
+			
+
 			/*Link Canvas*/
 			var stage = new createjs.Stage('demoCanvas');			
 
@@ -89,8 +104,12 @@
 			function make_cake()
 			{
 				var cake = new createjs.Bitmap('cake.png');
-				cake.scaleX = 0.10;
-				cake.scaleY = 0.10;
+				var current_cakeWidth = cake.image.width;
+				var current_cakeHeight = cake.image.height;
+				var desired_cakeWidth = 20;
+				var desired_cakeHeight = 20;
+				cake.scaleX = desired_cakeWidth/current_cakeWidth;
+				cake.scaleY = desired_cakeHeight/current_cakeHeight;
 
 				/*Either x or y must be 0, using a binary coin toss to decide*/
 				var coin = Math.floor(Math.random() * 1) + 1;
@@ -159,8 +178,8 @@
 						cake_tray.remove(i);
 					}
 					
-					cake_tray[i].x = cake_tray[i].x + Math.cos(toRadians(cake_tray[i].rotation))*5;
-					cake_tray[i].y = cake_tray[i].y + Math.sin(toRadians(cake_tray[i].rotation))*5
+					cake_tray[i].x = cake_tray[i].x + Math.cos(toRadians(cake_tray[i].rotation))*3;
+					cake_tray[i].y = cake_tray[i].y + Math.sin(toRadians(cake_tray[i].rotation))*3
 				}
 								
 				stage.update();

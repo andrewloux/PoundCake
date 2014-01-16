@@ -3,14 +3,18 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<title>Pound Cake</title>
+	<link rel="stylesheet" href="cake.css" type="text/css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
-	<script type="text/javascript" src="cake.js"></script>
 	<script type="text/javascript" src="ndgmr.Collision.js"></script>
+	<script type="text/javascript" src="cake.js"></script>
 </head>
 
-<body onload="Main();">
+<body>
 <div class="canvasHolder">
-	<canvas style="width:100%;height:100%;"id="demoCanvas"></canvas>
+	<canvas class="cake-canvas" id="demoCanvas"></canvas>
+	<!-- Call Main() from a handler -->
+	<div id="start" onclick="Main();">START</div>
 </div>
 </body>
 </html>
