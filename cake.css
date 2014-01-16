@@ -15,6 +15,25 @@
 	
 }
 
+#one{
+
+}
+#two{
+	top:50px;
+}
+#three{
+	top:100px;
+}
+
+.life{
+	background-image: url(file:///C:/Andrew/Downloads/PoundCake/cake.png);
+	width:50px;
+	height:50px;
+	background-size:100%;
+	position:absolute;
+	right:70px;
+	top:10px;
+}
 
 #score{
 	width:50%;
@@ -40,4 +59,8 @@
 	width:25px;
 	padding:5px;
 	position:absolute;
+}
+
+#game_over{
+	display:none;
 }

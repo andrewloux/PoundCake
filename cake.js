@@ -85,8 +85,25 @@
 			}
 		}
 		
+		function lost_life(life_id){
+			$("#" + life_id).animate({'opacity':.2},300,function(){
+				$("#" + life_id).animate({'opacity':1},300, function(){
+						$("#" + life_id).animate({'opacity':.2},300, function(){
+								$("#" + life_id).animate({'opacity':1},300, function(){
+										$("#" + life_id).fadeOut(300);
+									});
+								}); 
+						});
+				});			
+		}
+		
+		function game_over(){
+			;
+		}
 		function Main(){	
 		
+			var lives_lost = 0;
+			
 			/*Registering sound*/
 			createjs.Sound.addEventListener("fileload", handleLoad);
 			createjs.Sound.registerSound("CakeLongLoop.ogg", "cake_loop", 1, true);
@@ -214,6 +231,21 @@
 					//If the cake moves past the screen, remove from cake_tray and stage. 
 					if (cake_tray[i].x > stage.canvas.width){
 						//Dock lives over here.
+						lives_lost+=1;
+	
+						if (lives_lost == 1){
+							lost_life("one");
+						}
+						else if (lives_lost == 2){
+							lost_life("two");
+						}
+						else if (lives_lost == 3){
+							lost_life("three");
+							
+							//GAME OVER STUFF BELOW
+							//game_over();
+							//return;
+						}
 					
 						stage.removeChild(cake_tray[i]);
 						cake_tray.remove(i);
@@ -224,4 +256,5 @@
 								
 				stage.update();
 			}
+			return;
 		}
