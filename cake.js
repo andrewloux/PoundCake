@@ -1,3 +1,23 @@
+		//On Document Ready
+		var queue;
+		$(document).ready(function(){
+			// #start click reaction.
+			$("#start").click(function(){
+				$("#start").hide();
+				Main();
+			});
+			// Preload images
+			var manifest = [
+                {src:"cake.png", id:"cake"},
+                {src:"jayz.png", id:"jayz"},
+                {src:"CakeLongLoop.ogg", id:"CakeLoop"}
+            ];			
+			//Global variable below
+			queue = new createjs.LoadQueue();
+			queue.installPlugin(createjs.Sound);
+			queue.loadManifest(manifest);
+		});
+		
 		// Array Remove - By John Resig (MIT Licensed)
 		Array.prototype.remove = function(from, to) {
 		  var rest = this.slice((to || from) + 1 || this.length);
@@ -15,22 +35,6 @@
 			KEYCODE_RIGHT = 39,
 			KEYCODE_UP = 38, 
 			KEYCODE_DOWN = 40;
-		
-		/*Jay-Z initialization*/
-		var ellip = new createjs.Bitmap('jayz.png');
-		
-		var current_ellipWidth = ellip.image.width;
-		var current_ellipHeight = ellip.image.height;
-		var desired_ellipWidth = 65;
-		var desired_ellipHeight = 70;
-		ellip.scaleX = desired_ellipWidth/current_ellipWidth;
-		ellip.scaleY = desired_ellipHeight/current_ellipHeight;		
-		/*
-		var ellip = new createjs.Shape();
-        ellip.graphics.beginFill("red").drawCircle(0, 0, 3);
-		*/
-        ellip.x = 120;
-        ellip.y = 50;
 		
 		var cake_tray = [];
 		/*the cake*/
@@ -97,52 +101,64 @@
 				});			
 		}
 		
-		function game_over(){
-			;
-		}
 		function Main(){	
-		
+			
 			var lives_lost = 0;
 			
 			/*Registering sound*/
 			createjs.Sound.addEventListener("fileload", handleLoad);
 			createjs.Sound.registerSound("CakeLongLoop.ogg", "cake_loop", 1, true);
 			function handleLoad(event) {
-				 createjs.Sound.play("cake_loop");
+				//createjs.Sound.play("cake_loop");
 				 // alternately, we can pass full source path and specify each argument individually
-				 var myInstance = createjs.Sound.play("CakeLongLoop.ogg", createjs.Sound.INTERRUPT_ANY, 0, 0, -1, 1, 0);
+				//var myInstance = createjs.Sound.play("CakeLongLoop.ogg", createjs.Sound.INTERRUPT_ANY, 0, 0, -1, 1, 0);
 			 }			
 			
 
 			/*Link Canvas*/
-			var stage = new createjs.Stage('demoCanvas');			
-
+			var stage = new createjs.Stage('demoCanvas');		
+			
+			
+			
+			/*Jay-Z initialization*/
+			var path = queue.getItem("jayz").src;
+			
+			var ellip = new createjs.Bitmap(path);
+			var current_ellipWidth = ellip.image.width;
+			var current_ellipHeight = ellip.image.height;
+			var desired_ellipWidth = 65;
+			var desired_ellipHeight = 70;
+			ellip.x = 120;
+			ellip.y = 50;	
+			ellip.scaleX = desired_ellipWidth/current_ellipWidth;
+			ellip.scaleY = desired_ellipHeight/current_ellipHeight;		
+			/*
+			var ellip = new createjs.Shape();
+			ellip.graphics.beginFill("red").drawCircle(0, 0, 3);
+			*/
+		
+			/*Jay-Z initialization*/
+			stage.addChild(ellip);
+			stage.update();
 			/*This function must exist after the Stage is initialized so I can keep popping cakes onto the canvas*/
-			function make_cake()
-			{
-				var cake = new createjs.Bitmap('cake.png');
+			function make_cake(){
+			    var path = queue.getItem("cake").src;
+				var cake = new createjs.Bitmap(path);
 				var current_cakeWidth = cake.image.width;
 				var current_cakeHeight = cake.image.height;
 				var desired_cakeWidth = 20;
 				var desired_cakeHeight = 20;
+                cake.x = 0;
+                cake.y = Math.floor((Math.random()*stage.canvas.height)+1); //Random number between 1 and 10
 				cake.scaleX = desired_cakeWidth/current_cakeWidth;
 				cake.scaleY = desired_cakeHeight/current_cakeHeight;
 
-				/*Either x or y must be 0, using a binary coin toss to decide*/
-				var coin = Math.floor(Math.random() * 1) + 1;
-				if (coin == 1){
-					cake.x = 0;
-					cake.y = Math.floor((Math.random()*stage.canvas.height)+1); //Random number between 1 and 10
-				}
-				else if (coin == 0){
-					cake.x = Math.floor((Math.random()*stage.canvas.width)+1); //Random number between 1 and 10					
-					cake.y = 0;
-				}
 				
 				//cake.rotation = Math.floor((Math.random()*100)+1); //Random angle between 1 and 180
 				cake.rotation = 0;
 				cake_tray.push(cake);
 				stage.addChild(cake);
+				stage.update();
 			}
 			
 			setInterval(function(){
@@ -150,9 +166,6 @@
 					make_cake();
 				}
 			},500);
-			
-			/*Jay-Z initialization*/
-			stage.addChild(ellip);
 			
 			/*Connecting keydown input to keyPressed handler*/
 			this.document.onkeydown = keyPressed;
@@ -242,9 +255,13 @@
 						else if (lives_lost == 3){
 							lost_life("three");
 							
-							//GAME OVER STUFF BELOW
-							//game_over();
-							//return;
+							//Reset game state.
+							lives_lost = 0;
+							cake_tray = [];
+							createjs.Sound.stop();
+							stage.removeAllChildren();
+							$("#score").text(0);
+							createjs.Ticker.removeEventListener('tick', handleTick);
 						}
 					
 						stage.removeChild(cake_tray[i]);
