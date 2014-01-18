@@ -103,7 +103,11 @@
 		
 		function Main(){	
 			
+			//Setting up control variables and resetting state
+			$(".life").each(function(){$(this).show();});
 			var lives_lost = 0;
+			var game_on = true;
+			$("#score").text(0);
 			
 			/*Registering sound*/
 			createjs.Sound.addEventListener("fileload", handleLoad);
@@ -162,8 +166,13 @@
 			}
 			
 			setInterval(function(){
-				if (cake_tray.length < 5){
-					make_cake();
+				if (game_on == true){
+					if (cake_tray.length < 5){
+						make_cake();
+					}
+				}
+				else{
+					;
 				}
 			},500);
 			
@@ -259,9 +268,12 @@
 							//Reset game state.
 							lives_lost = 0;
 							cake_tray = [];
+							game_on = false;
+							
+							//Restart lives
+							$("#start").show();
 							createjs.Sound.stop();
 							stage.removeAllChildren();
-							$("#score").text(0);
 							createjs.Ticker.removeEventListener('tick', handleTick);
 						}
 					
