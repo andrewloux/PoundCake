@@ -1,9 +1,10 @@
 		//On Document Ready
-		$("#loading_modal").modal('show');
 		
 		var queue;
 		var loaded = false;
 		$(document).ready(function(){
+			//Show loadig modal
+			$("#loading_modal").modal('show');
 			// #start click reaction.
 			$("#start").click(function(){
 				$("#start").hide();
