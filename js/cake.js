@@ -172,17 +172,6 @@
 				stage.addChild(cake);
 			}
 			
-			setInterval(function(){
-				if (game_on == true){
-					if (cake_tray.length < 5){
-						make_cake();
-					}
-				}
-				else{
-					;
-				}
-			},500);
-			
 			var cake_speed = 3;
 			setInterval(function(){cake_speed+=3;},20000);
 			
@@ -246,6 +235,8 @@
 				a.) Check cake collisions
 				b.) Cake movements
 				*/
+				
+				
 				for (var i = 0; i < cake_tray.length; i++) {
 				
 					var killed_cake = false;
@@ -300,7 +291,17 @@
 						}
 					}
 				}
-								
+				
+				//Populating the canvas
+				if (game_on == true){
+					if (cake_tray.length < 5){
+						make_cake();
+					}
+				}
+				else{
+					;
+				}
+												
 				stage.update();
 			}
 			return;
