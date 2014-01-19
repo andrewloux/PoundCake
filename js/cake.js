@@ -170,7 +170,6 @@
 				cake.rotation = 0;
 				cake_tray.push(cake);
 				stage.addChild(cake);
-				stage.update();
 			}
 			
 			setInterval(function(){
