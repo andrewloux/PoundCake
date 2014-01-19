@@ -176,6 +176,7 @@
 				if (game_on == true){
 					if (cake_tray.length < 5){
 						make_cake();
+						stage.update();
 					}
 				}
 				else{
