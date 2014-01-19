@@ -6,6 +6,11 @@
 				$("#start").hide();
 				Main();
 			});
+			// #restart click reaction.
+			$("#restart").click(function(){
+				$("#game_over").hide();
+				Main();
+			});			
 			// Preload images
 			var manifest = [
                 {src:"cake.png", id:"cake"},
@@ -264,24 +269,24 @@
 						else if (lives_lost == 3){
 							lost_life("three");
 							
-							//Game Over 
-							//Reset game state.
+							//Game Over, reset game state.
 							lives_lost = 0;
 							cake_tray = [];
 							game_on = false;
 							
-							//Restart lives
+							//Refresh stage
 							$("#start").show();
 							createjs.Sound.stop();
 							stage.removeAllChildren();
+							$("#game_over").show(); //Show Share/Restart Dialog
 							createjs.Ticker.removeEventListener('tick', handleTick);
 						}
 					
 						stage.removeChild(cake_tray[i]);
 						cake_tray.remove(i);
 					}
+					//Moving cake position
 					cake_tray[i].x = cake_tray[i].x + Math.cos(toRadians(cake_tray[i].rotation))*3;
-					//cake_tray[i].y = cake_tray[i].y + Math.sin(toRadians(cake_tray[i].rotation))*3
 				}
 								
 				stage.update();
