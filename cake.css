@@ -1,9 +1,17 @@
-/* Removes Mobile Highlight */ 
+@font-face
+{
+	font-family: minecraftia;
+	src: url(Minecraftia.ttf);
+}
+
 *{
+	/* Removes Mobile Highlight */ 
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-family: minecraftia;
 }
 
 .cake-canvas{
+	margin-top:10%;
 	width:50%;
 	height:50%;
 	margin-left:auto;
@@ -12,28 +20,39 @@
 }
 
 #lives{
-	
-}
-
-#one{
-
-}
-#two{
-	top:50px;
-}
-#three{
-	top:100px;
+	width:200px;
+	height:45px;
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
 }
 
 .life{
 	background-image: url(file:///C:/Andrew/Downloads/PoundCake/cake.png);
-	width:50px;
-	height:50px;
-	background-size:100%;
-	position:absolute;
-	right:70px;
-	top:10px;
+	width:40px;
+	height:100%;
+	background-size:cover;
 }
+
+#one{
+	float:left;
+	position:relative;
+}
+#two{
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+
+}
+#three{
+	
+	margin-top:-45px; /*float:right leaves it misaligned. Why??*/
+
+	float:right;
+	position:relative;
+}
+
+
 
 #score{
 	width:50%;
@@ -42,7 +61,7 @@
 	margin-right:auto;
 	display:block;
 	
-	/*font-size:0.5em;*/
+	font-size:2em;
 	text-align:center;
 }
 
@@ -51,16 +70,67 @@
     right:0;
     margin-left:auto;
     margin-right:auto;
-	top:15%;
+	top:10%;
+	width:95px;
+	
+	font-size:1.5em;
+
+	padding:10px;
 	
 	text-align:center;
 	border:1px solid;
-	font-size:0.5em;
-	width:25px;
-	padding:5px;
 	position:absolute;
 }
 
+#start:hover{
+	cursor:pointer;
+}
+
+#tweet{
+	width:45px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#restart{
+	width:100px;
+	
+	margin-left:auto;
+	margin-right:auto;
+	
+	position:relative;
+	text-align:center;
+	border-bottom:dashed;
+}
+
+#restart:hover{
+	cursor:pointer;
+}
+
 #game_over{
+	width:30%;
+	height:110px;
+	padding:10px;
+	
+	top:13%;
+	left:0;
+	right:0;
+	margin-left:auto;
+	margin-right:auto;
+	
+	background:white;
+	border:1px solid;
+	position:absolute;
 	display:none;
 }
+
+	 
+#share-buttons img {
+	width: 35px;
+	padding: 5px;
+	border: 0;
+	box-shadow: 0;
+	display: inline;
+}
+	 

@@ -11,6 +11,12 @@
 				$("#game_over").hide();
 				Main();
 			});			
+			
+			$("#twitter_url").click(function(){
+				var score = $("#score").text();
+				$("#twitter_url").attr("href","http://twitter.com/share?url=http://cakecakecake.meteor.com&text=I made Jay-Z eat "+ score +" cakes!");
+			});
+			
 			// Preload images
 			var manifest = [
                 {src:"cake.png", id:"cake"},
@@ -94,12 +100,13 @@
 			}
 		}
 		
+		//Animations for losing life.
 		function lost_life(life_id){
 			$("#" + life_id).animate({'opacity':.2},300,function(){
 				$("#" + life_id).animate({'opacity':1},300, function(){
 						$("#" + life_id).animate({'opacity':.2},300, function(){
 								$("#" + life_id).animate({'opacity':1},300, function(){
-										$("#" + life_id).fadeOut(300);
+										$("#" + life_id).css("opacity","0");
 									});
 								}); 
 						});
@@ -109,7 +116,8 @@
 		function Main(){	
 			
 			//Setting up control variables and resetting state
-			$(".life").each(function(){$(this).show();});
+			$(".cake-canvas").css("border","1px solid");
+			$(".life").each(function(){$(this).css("opacity","1");});
 			var lives_lost = 0;
 			var game_on = true;
 			$("#score").text(0);
@@ -181,6 +189,10 @@
 				}
 			},500);
 			
+			var cake_speed = 3;
+			setInterval(function(){cake_speed+=3;},20000);
+			
+			
 			/*Connecting keydown input to keyPressed handler*/
 			this.document.onkeydown = keyPressed;
 			/*Connecting key up event to keyUp handler*/
@@ -202,7 +214,7 @@
 						;
 					}
 					else{
-						ellip.x -= 5;
+						ellip.x -= 7;
 					}
 				} else if(right) {
 					//If too far right
@@ -210,7 +222,7 @@
 						;
 					}
 					else{
-						ellip.x += 5;
+						ellip.x += 7;
 					}
 				}
 
@@ -220,7 +232,7 @@
 						;
 					}
 					else{
-						ellip.y -= 5;
+						ellip.y -= 7;
 					}
 				} else if(down) {
 					//If too far down
@@ -228,7 +240,7 @@
 						;
 					}
 					else{
-						ellip.y += 5;
+						ellip.y += 7;
 					}
 				}
 
@@ -247,7 +259,7 @@
 					if (collision){
 						//Points tallying
 						var score = parseFloat($("#score").text());
-						score+=1;
+						score+=10;
 						$("#score").text(score);
 						
 						//Removing cakes Jay Z has eaten.
@@ -275,7 +287,6 @@
 							game_on = false;
 							
 							//Refresh stage
-							$("#start").show();
 							createjs.Sound.stop();
 							stage.removeAllChildren();
 							$("#game_over").show(); //Show Share/Restart Dialog
@@ -286,7 +297,7 @@
 						cake_tray.remove(i);
 					}
 					//Moving cake position
-					cake_tray[i].x = cake_tray[i].x + Math.cos(toRadians(cake_tray[i].rotation))*3;
+					cake_tray[i].x = cake_tray[i].x + Math.cos(toRadians(cake_tray[i].rotation))*cake_speed;
 				}
 								
 				stage.update();
