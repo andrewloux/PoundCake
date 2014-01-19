@@ -19,9 +19,9 @@
 			
 			// Preload images
 			var manifest = [
-                {src:"cake.png", id:"cake"},
-                {src:"jayz.png", id:"jayz"},
-                {src:"CakeLongLoop.ogg", id:"CakeLoop"}
+                {src:"assets/cake.png", id:"cake"},
+                {src:"assets/jayz.png", id:"jayz"},
+                {src:"assets/CakeLongLoop.ogg", id:"CakeLoop"}
             ];			
 			//Global variable below
 			queue = new createjs.LoadQueue();

@@ -1,7 +1,7 @@
 @font-face
 {
 	font-family: minecraftia;
-	src: url(Minecraftia.ttf);
+	src: url(../assets/Minecraftia.ttf);
 }
 
 *{
@@ -28,7 +28,7 @@
 }
 
 .life{
-	background-image: url(file:///C:/Andrew/Downloads/PoundCake/cake.png);
+	background-image: url(../assets/cake.png);
 	width:40px;
 	height:100%;
 	background-size:cover;
@@ -56,7 +56,6 @@
 
 #score{
 	width:50%;
-	height:50%;
 	margin-left:auto;
 	margin-right:auto;
 	display:block;
