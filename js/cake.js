@@ -1,7 +1,6 @@
 		//On Document Ready
 		
 		var queue;
-		var loaded = false;
 		$(document).ready(function(){
 			//Show loadig modal
 			$("#loading_modal").modal('show');
@@ -36,7 +35,6 @@
 		
 		function handleComplete(){
 			$("#loading_modal").modal('hide');
-			loaded = true;
 		}
 		
 		// Array Remove - By John Resig (MIT Licensed)
@@ -125,12 +123,8 @@
 		
 		function Main(){	
 			
-			if (loaded == true){
-				createjs.Sound.play("CakeLoop", createjs.Sound.INTERRUPT_ANY, 0, 0, -1, 0.10, 0);
-			}
-			else{
-				alert("SONG NOT LOADED");
-			}
+			//Loading modal ensures that this is loaded before Main() is called.
+			createjs.Sound.play("CakeLoop", createjs.Sound.INTERRUPT_ANY, 0, 0, -1, 0.10, 0);
 			
 			//Setting up control variables and resetting state
 			$(".cake-canvas").css("border","1px solid");
@@ -255,6 +249,8 @@
 				*/
 				for (var i = 0; i < cake_tray.length; i++) {
 				
+					var killed_cake = false;
+					
 					var collision = ndgmr.checkPixelCollision(ellip,cake_tray[i],0.5);
 					
 					if (collision){
@@ -296,9 +292,13 @@
 					
 						stage.removeChild(cake_tray[i]);
 						cake_tray.remove(i);
+						killed_cake = true;
 					}
-					//Moving cake position
-					cake_tray[i].x = cake_tray[i].x + Math.cos(toRadians(cake_tray[i].rotation))*cake_speed;
+					
+					if (killed_cake == false){
+						//Moving cake position
+						cake_tray[i].x = cake_tray[i].x + Math.cos(toRadians(cake_tray[i].rotation))*cake_speed;
+					}					
 				}
 								
 				stage.update();
