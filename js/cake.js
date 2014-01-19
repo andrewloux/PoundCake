@@ -167,8 +167,8 @@
 				
 				//cake.rotation = Math.floor((Math.random()*100)+1); //Random angle between 1 and 180
 				cake.rotation = 0;
-				cake_tray.push(cake);
 				stage.addChild(cake);
+				cake_tray.push(cake);
 			}
 			
 			var cake_speed = 3;
