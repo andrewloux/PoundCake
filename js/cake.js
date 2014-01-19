@@ -17,7 +17,7 @@
 			
 			$("#twitter_url").click(function(){
 				var score = $("#score").text();
-				$("#twitter_url").attr("href","http://twitter.com/share?url=http://cakecakecake.meteor.com&text=I made Jay-Z eat "+ score +" cakes!");
+				$("#twitter_url").attr("href","http://twitter.com/share?url=http://cakecakecake.meteor.com&text="+ score +" cakes! #cakecakecake");
 			});
 			
 			// Preload images
