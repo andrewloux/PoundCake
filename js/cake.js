@@ -1,5 +1,6 @@
 		//On Document Ready
 		var queue;
+		var loaded = false;
 		$(document).ready(function(){
 			// #start click reaction.
 			$("#start").click(function(){
@@ -26,8 +27,14 @@
 			//Global variable below
 			queue = new createjs.LoadQueue();
 			queue.installPlugin(createjs.Sound);
+			queue.on("complete", handleComplete, this);			
 			queue.loadManifest(manifest);
 		});
+		
+		function handleComplete(){
+			alert("LOADING DONE");
+			loaded = true;
+		}
 		
 		// Array Remove - By John Resig (MIT Licensed)
 		Array.prototype.remove = function(from, to) {
@@ -115,27 +122,22 @@
 		
 		function Main(){	
 			
+			if (loaded == true){
+				createjs.Sound.play("CakeLoop", createjs.Sound.INTERRUPT_ANY, 0, 0, -1, 0.10, 0);
+			}
+			else{
+				alert("SONG NOT LOADED");
+			}
+			
 			//Setting up control variables and resetting state
 			$(".cake-canvas").css("border","1px solid");
 			$(".life").each(function(){$(this).css("opacity","1");});
 			var lives_lost = 0;
 			var game_on = true;
 			$("#score").text(0);
-			createjs.Sound.play("CakeLoop", createjs.Sound.INTERRUPT_ANY, 0, 0, -1, 0.10, 0);
-			/*Registering sound*/
-			//createjs.Sound.addEventListener("fileload", handleLoad);
-			//createjs.Sound.registerSound("CakeLongLoop.ogg", "cake_loop", 1, true);
-			function handleLoad(event) {
-				createjs.Sound.play("cake_loop");
-				 // alternately, we can pass full source path and specify each argument individually
-				var myInstance; 
-			 }			
-			
 
 			/*Link Canvas*/
-			var stage = new createjs.Stage('demoCanvas');		
-			
-			
+			var stage = new createjs.Stage('demoCanvas');					
 			
 			/*Jay-Z initialization*/
 			var path = queue.getItem("jayz").src;
@@ -148,11 +150,7 @@
 			ellip.x = 120;
 			ellip.y = 50;	
 			ellip.scaleX = desired_ellipWidth/current_ellipWidth;
-			ellip.scaleY = desired_ellipHeight/current_ellipHeight;		
-			/*
-			var ellip = new createjs.Shape();
-			ellip.graphics.beginFill("red").drawCircle(0, 0, 3);
-			*/
+			ellip.scaleY = desired_ellipHeight/current_ellipHeight;	
 		
 			/*Jay-Z initialization*/
 			stage.addChild(ellip);
