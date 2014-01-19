@@ -261,6 +261,7 @@
 						//Removing cakes Jay Z has eaten.
 						stage.removeChild(cake_tray[i]);
 						cake_tray.remove(i);
+						killed_cake = true;
 					}
 					
 					//If the cake moves past the screen, remove from cake_tray and stage. 
