@@ -2,6 +2,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<title>Pound Cake</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/cake.css" type="text/css" />
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
@@ -10,6 +18,26 @@
 </head>
 
 <body>
+
+<!-- Loading modal button -->
+<div class="modal fade" id="loading_modal" role="loading" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="loading_title" class="modal-title">Loading...</h3>
+      </div>
+      <div class="modal-body">
+            <!-- Meat of the progress bar -->
+                  <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                    </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- Twitter -->
 <div id="game_over">
 	<div id="restart">RESTART</div>

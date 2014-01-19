@@ -1,4 +1,6 @@
 		//On Document Ready
+		$("#loading_modal").modal('show');
+		
 		var queue;
 		var loaded = false;
 		$(document).ready(function(){
@@ -32,7 +34,7 @@
 		});
 		
 		function handleComplete(){
-			alert("LOADING DONE");
+			$("loading_modal").modal('hide');
 			loaded = true;
 		}
 		
