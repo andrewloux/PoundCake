@@ -263,42 +263,42 @@
 						cake_tray.remove(i);
 						killed_cake = true;
 					}
-					
-					//If the cake moves past the screen, remove from cake_tray and stage. 
-					if (cake_tray[i].x > stage.canvas.width){
-						//Dock lives over here.
-						lives_lost+=1;
-	
-						if (lives_lost == 1){
-							lost_life("one");
+					else{
+						//If the cake moves past the screen, remove from cake_tray and stage. 
+						if (cake_tray[i].x > stage.canvas.width){
+							//Dock lives over here.
+							lives_lost+=1;
+		
+							if (lives_lost == 1){
+								lost_life("one");
+							}
+							else if (lives_lost == 2){
+								lost_life("two");
+							}
+							else if (lives_lost == 3){
+								lost_life("three");
+								
+								//Game Over, reset game state.
+								lives_lost = 0;
+								cake_tray = [];
+								game_on = false;
+								
+								//Refresh stage
+								createjs.Sound.stop();
+								stage.removeAllChildren();
+								$("#game_over").show(); //Show Share/Restart Dialog
+								createjs.Ticker.removeEventListener('tick', handleTick);
+							}
+						
+							stage.removeChild(cake_tray[i]);
+							cake_tray.remove(i);
+							killed_cake = true;
 						}
-						else if (lives_lost == 2){
-							lost_life("two");
+						if (killed_cake == false){
+							//Moving cake position
+							cake_tray[i].x = cake_tray[i].x + Math.cos(toRadians(cake_tray[i].rotation))*cake_speed;
 						}
-						else if (lives_lost == 3){
-							lost_life("three");
-							
-							//Game Over, reset game state.
-							lives_lost = 0;
-							cake_tray = [];
-							game_on = false;
-							
-							//Refresh stage
-							createjs.Sound.stop();
-							stage.removeAllChildren();
-							$("#game_over").show(); //Show Share/Restart Dialog
-							createjs.Ticker.removeEventListener('tick', handleTick);
-						}
-					
-						stage.removeChild(cake_tray[i]);
-						cake_tray.remove(i);
-						killed_cake = true;
 					}
-					
-					if (killed_cake == false){
-						//Moving cake position
-						cake_tray[i].x = cake_tray[i].x + Math.cos(toRadians(cake_tray[i].rotation))*cake_speed;
-					}					
 				}
 								
 				stage.update();
