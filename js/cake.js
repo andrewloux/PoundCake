@@ -151,6 +151,7 @@
 		
 			/*Jay-Z initialization*/
 			stage.addChild(ellip);
+			stage.update();
 			/*This function must exist after the Stage is initialized so I can keep popping cakes onto the canvas*/
 			function make_cake(){
 			    var path = queue.getItem("cake").src;
