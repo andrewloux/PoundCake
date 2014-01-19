@@ -35,7 +35,7 @@
 		});
 		
 		function handleComplete(){
-			$("loading_modal").modal('hide');
+			$("#loading_modal").modal('hide');
 			loaded = true;
 		}
 		
