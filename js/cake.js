@@ -121,14 +121,14 @@
 			var lives_lost = 0;
 			var game_on = true;
 			$("#score").text(0);
-			
+			createjs.Sound.play("CakeLoop", createjs.Sound.INTERRUPT_ANY, 0, 0, -1, 0.10, 0);
 			/*Registering sound*/
-			createjs.Sound.addEventListener("fileload", handleLoad);
-			createjs.Sound.registerSound("CakeLongLoop.ogg", "cake_loop", 1, true);
+			//createjs.Sound.addEventListener("fileload", handleLoad);
+			//createjs.Sound.registerSound("CakeLongLoop.ogg", "cake_loop", 1, true);
 			function handleLoad(event) {
 				createjs.Sound.play("cake_loop");
 				 // alternately, we can pass full source path and specify each argument individually
-				var myInstance = createjs.Sound.play("CakeLongLoop.ogg", createjs.Sound.INTERRUPT_ANY, 0, 0, -1, 0.10, 0);
+				var myInstance; 
 			 }			
 			
 
