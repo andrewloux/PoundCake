@@ -22,7 +22,7 @@
 			var manifest = [
                 {src:"assets/cake.png", id:"cake"},
                 {src:"assets/jayz.png", id:"jayz"},
-                {src:"assets/CakeLongLoop.ogg", id:"CakeLoop"}
+                {src:"assets/CakeLoop.ogg", id:"CakeLoop"}
             ];			
 			//Global variable below
 			queue = new createjs.LoadQueue();
