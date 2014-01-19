@@ -23,9 +23,6 @@
 <div class="modal fade" id="loading_modal" role="loading" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="loading_title" class="modal-title">Loading...</h3>
-      </div>
       <div class="modal-body">
             <!-- Meat of the progress bar -->
                   <div class="progress progress-striped active">
