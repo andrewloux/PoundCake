@@ -137,7 +137,9 @@
 			var stage = new createjs.Stage('demoCanvas');					
 			
 			/*Jay-Z initialization*/
-			var path = queue.getItem("jayz").src;
+			var path = queue.getResult("jayz");
+			
+			alert(path);
 			
 			var ellip = new createjs.Bitmap(path);
 			var current_ellipWidth = ellip.image.width;
@@ -153,7 +155,7 @@
 			stage.addChild(ellip);
 			/*This function must exist after the Stage is initialized so I can keep popping cakes onto the canvas*/
 			function make_cake(){
-			    var path = queue.getItem("cake").src;
+			    var path = queue.getResult("cake");
 				var cake = new createjs.Bitmap(path);
 				var current_cakeWidth = cake.image.width;
 				var current_cakeHeight = cake.image.height;
