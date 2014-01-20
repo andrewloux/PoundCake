@@ -9,7 +9,7 @@ A little web-game inspired by the song [Pound Cake by Drake](http://www.youtube.
 
 ---
 
-*Tools*
+**Tools**
 
 Made on the HTML5 Canvas using [the CreateJS suite](http://www.createjs.com/), PHP and deployed using [Heroku](https://www.heroku.com/)
 
