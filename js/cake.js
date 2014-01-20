@@ -17,7 +17,7 @@
 			
 			$("#twitter_url").click(function(){
 				var score = $("#score").text();
-				var msg = "http://twitter.com/share?url=http://cakecakecake.heroku.com&text="+ score +" cakes! #cakecakecake";
+				var msg = "http://twitter.com/share?url=http://cakecakecake.heroku.com&hashtags=cakecakecake&text="+ score +" cakes! #cakecakecake";
 				$("#twitter_url").attr("href",msg);
 			});
 			
