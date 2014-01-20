@@ -138,9 +138,7 @@
 			
 			/*Jay-Z initialization*/
 			var path = queue.getResult("jayz");
-			
-			alert(path);
-			
+						
 			var ellip = new createjs.Bitmap(path);
 			var current_ellipWidth = ellip.image.width;
 			var current_ellipHeight = ellip.image.height;
