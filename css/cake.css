@@ -27,6 +27,12 @@
 	position:relative;
 }
 
+
+#info{
+	width:100%;
+	text-align:center;
+}
+
 .life{
 	background-image: url(../assets/cake.png);
 	width:40px;
