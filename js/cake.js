@@ -172,8 +172,10 @@
 				cake_tray.push(cake);
 			}
 			
-			var cake_speed = 3;
+			/*Speed/Difficulty Control*/
+			var cake_speed = 3;		var jay_speed = 7;
 			setInterval(function(){cake_speed+=1;},7000);
+			setInterval(function(){jay_speed+=1;},10000);
 			
 			
 			/*Connecting keydown input to keyPressed handler*/
@@ -197,7 +199,7 @@
 						;
 					}
 					else{
-						ellip.x -= 7;
+						ellip.x -= jay_speed;
 					}
 				} else if(right) {
 					//If too far right
@@ -205,7 +207,7 @@
 						;
 					}
 					else{
-						ellip.x += 7;
+						ellip.x += jay_speed;
 					}
 				}
 
@@ -215,7 +217,7 @@
 						;
 					}
 					else{
-						ellip.y -= 7;
+						ellip.y -= jay_speed;
 					}
 				} else if(down) {
 					//If too far down
@@ -223,7 +225,7 @@
 						;
 					}
 					else{
-						ellip.y += 7;
+						ellip.y += jay_speed;
 					}
 				}
 
