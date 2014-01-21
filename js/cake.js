@@ -173,7 +173,7 @@
 			}
 			
 			var cake_speed = 3;
-			setInterval(function(){cake_speed+=3;},20000);
+			setInterval(function(){cake_speed+=3;},40000);
 			
 			
 			/*Connecting keydown input to keyPressed handler*/
