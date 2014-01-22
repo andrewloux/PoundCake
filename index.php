@@ -76,6 +76,7 @@
 </div>
 
 <div id="info">Use your arrow keys to control Jay-Z, and DON'T let any of the cakes get away!</div>
+<div id="contact">github.com/alouis93</div>
 
 
 </body>

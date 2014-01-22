@@ -13,7 +13,12 @@
 			$("#restart").click(function(){
 				$("#game_over").hide();
 				Main();
-			});			
+			});	
+
+			// github link
+			$("#contact").click(function(){
+				window.open("http://github.com/alouis93", '_blank');
+			});				
 			
 			$("#twitter_url").click(function(){
 				var score = $("#score").text();

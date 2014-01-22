@@ -34,6 +34,17 @@
 	text-align:center;
 }
 
+#contact{
+	bottom:0;
+	right:0;
+	font-size:12px;
+	position:absolute;
+}
+
+#contact:hover{
+	cursor:pointer;
+}
+
 .life{
 	background-image: url(../assets/cake.png);
 	width:40px;
