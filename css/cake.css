@@ -10,14 +10,38 @@
 	font-family: minecraftia;
 }
 
-.cake-canvas{
-	margin-top:10%;
-	width:50%;
-	height:50%;
-	margin-left:auto;
-	margin-right:auto;
-	display:block;
+@media (max-width: 670px) { 
+	.cake-canvas{
+		margin-top:10%;
+		width:100%;
+		height:50%;
+		margin-left:auto;
+		margin-right:auto;
+		display:block;
+	}	
 }
+@media (min-width:670px) and (max-width: 921px) { 
+	.cake-canvas{
+		margin-top:10%;
+		width:80%;
+		height:50%;
+		margin-left:auto;
+		margin-right:auto;
+		display:block;
+	}	
+ } 
+
+ @media (min-width:921px) { 
+	.cake-canvas{
+		margin-top:10%;
+		width:50%;
+		height:50%;
+		margin-left:auto;
+		margin-right:auto;
+		display:block;
+	}	
+ } 
+
 
 #lives{
 	width:200px;
