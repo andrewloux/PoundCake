@@ -180,7 +180,7 @@
 			/*Speed/Difficulty Control*/
 			var cake_speed = 3;		var jay_speed = 7;
 			setInterval(function(){cake_speed+=1;},7000);
-			setInterval(function(){jay_speed+=1;},10000);
+			setInterval(function(){jay_speed+=2;},10000);
 			
 			
 			/*Connecting keydown input to keyPressed handler*/
