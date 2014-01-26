@@ -33,7 +33,7 @@
 
  @media (min-width:921px) { 
 	.cake-canvas{
-		width:65%;
+		width:60%;
 		height:55%;
 		margin-left:auto;
 		margin-right:auto;
@@ -53,8 +53,9 @@
 
 
 #info{
+	position:40px;
 	width:97%;
-	margin-top:70px;
+	bottom:40px;
 	text-align:center;
 }
 
