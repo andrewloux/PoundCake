@@ -24,6 +24,7 @@
 	.cake-canvas{
 		width:100%;
 		height:60%;
+		margin-top:8%;
 		margin-left:auto;
 		margin-right:auto;
 		display:block;
@@ -35,6 +36,7 @@
 	.cake-canvas{
 		width:60%;
 		height:55%;
+		margin-top:8%;
 		margin-left:auto;
 		margin-right:auto;
 		display:block;
@@ -53,7 +55,7 @@
 
 
 #info{
-	position:40px;
+	position:absolute;
 	width:97%;
 	bottom:40px;
 	text-align:center;
