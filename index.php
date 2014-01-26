@@ -62,7 +62,7 @@
 	</div>
 </div>
 <div class="canvasHolder">
-	<canvas class="cake-canvas" id="demoCanvas" width='400' height='200'></canvas>
+	<canvas class="cake-canvas" id="demoCanvas" width='500' height='250'></canvas>
 	<!-- Call Main() from a handler -->
 	<div id="start">START</div>
 	<div id="score">0</div>

@@ -141,7 +141,7 @@
 
 			/*Link Canvas*/
 			var stage = new createjs.Stage('demoCanvas');	
-			stage.enableMouseOver(10);	
+			stage.enableMouseOver(5);	
 			stage.addEventListener("stagemousemove", handleMouseMove);
 			createjs.Touch.enable(stage);
 						
