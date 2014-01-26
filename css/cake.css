@@ -12,7 +12,6 @@
 
 @media (max-width: 670px) { 
 	.cake-canvas{
-		margin-top:3%;
 		width:100%;
 		height:60%;
 		margin-left:auto;
@@ -23,7 +22,6 @@
 }
 @media (min-width:670px) and (max-width: 921px) { 
 	.cake-canvas{
-		margin-top:3%;
 		width:100%;
 		height:60%;
 		margin-left:auto;
@@ -35,9 +33,8 @@
 
  @media (min-width:921px) { 
 	.cake-canvas{
-		margin-top:3%;
-		width:80%;
-		height:70%;
+		width:65%;
+		height:55%;
 		margin-left:auto;
 		margin-right:auto;
 		display:block;
