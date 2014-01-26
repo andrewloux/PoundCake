@@ -175,7 +175,7 @@
 				var desired_cakeWidth = 20;
 				var desired_cakeHeight = 20;
                 cake.x = 0;
-                cake.y = Math.floor((Math.random()*(stage.canvas.height - 50 + 1))+50); //Random number between 1 and 10
+                cake.y = Math.floor((Math.random()*(stage.canvas.height - 40 + 1))+40); //Random number between 1 and 10
 				cake.scaleX = desired_cakeWidth/current_cakeWidth;
 				cake.scaleY = desired_cakeHeight/current_cakeHeight;
 
