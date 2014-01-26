@@ -140,7 +140,11 @@
 			$("#score").text(0);
 
 			/*Link Canvas*/
-			var stage = new createjs.Stage('demoCanvas');					
+			var stage = new createjs.Stage('demoCanvas');	
+			stage.enableMouseOver(10);	
+			stage.addEventListener("stagemousemove", handleMouseMove);
+			createjs.Touch.enable(stage);
+						
 			
 			/*Jay-Z initialization*/
 			var path = queue.getResult("jayz");
@@ -154,6 +158,11 @@
 			ellip.y = 50;	
 			ellip.scaleX = desired_ellipWidth/current_ellipWidth;
 			ellip.scaleY = desired_ellipHeight/current_ellipHeight;	
+			
+			function handleMouseMove(evt){
+				ellip.x = evt.stageX;
+				ellip.y = evt.stageY;
+			}
 		
 			/*Jay-Z initialization*/
 			stage.addChild(ellip);
