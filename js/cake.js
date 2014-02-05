@@ -6,11 +6,13 @@
 			$("#loading_modal").modal('show');
 			// #start click reaction.
 			$("#start").click(function(){
+				$(".cake-canvas").css("cursor","none");
 				$("#start").hide();
 				Main();
 			});
 			// #restart click reaction.
 			$("#restart").click(function(){
+				$(".cake-canvas").css("cursor","none");
 				$("#game_over").hide();
 				Main();
 			});	
@@ -294,6 +296,7 @@
 								createjs.Sound.stop();
 								stage.removeAllChildren();
 								$("#game_over").show(); //Show Share/Restart Dialog
+								$(".cake-canvas").css("cursor","default");
 								createjs.Ticker.removeEventListener('tick', handleTick);
 							}
 						
